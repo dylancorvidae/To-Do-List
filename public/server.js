@@ -27,7 +27,7 @@ app.get('/api/todos', (req, res) => {
             id,
             name,
             inactive
-        FROM types
+        FROM tasks
         ${where}
         ORDER BY name;
     `)
@@ -41,14 +41,14 @@ app.get('/api/todos', (req, res) => {
         });   
 });
 
-app.post('/api/types', (req, res) => {
-    const type = req.body;
+app.post('/api/tasks', (req, res) => {
+    const task = req.body;
     client.query(`
-        INSERT INTO types (name)
+        INSERT INTO tasks (name)
         VALUES ($1)
         RETURNING *;
     `,
-    [type.name]
+    [task.name]
     )
         .then(result => {
             res.json(result.rows[0]);
@@ -56,7 +56,7 @@ app.post('/api/types', (req, res) => {
         .catch(err => {
             if(err.code === '23505') {
                 res.status(400).json({
-                    error: `Type "${type.name}" already exists`
+                    error: `Task "${task.name}" already exists`
                 });
             }
             res.status(500).json({
@@ -65,18 +65,18 @@ app.post('/api/types', (req, res) => {
         }); 
 });
 
-app.put('/api/types/:id', (req, res) => {
+app.put('/api/tasks/:id', (req, res) => {
     const id = req.params.id;
-    const type = req.body;
+    const task = req.body;
 
     client.query(`
-        UPDATE types
+        UPDATE tasks
         SET    name = $2,
                inactive = $3
         WHERE  id = $1
         RETURNING *;
     `,
-    [id, type.name, type.inactive]
+    [id, task.name, task.inactive]
     )
         .then(result => {
             res.json(result.rows[0]);
@@ -84,7 +84,7 @@ app.put('/api/types/:id', (req, res) => {
         .catch(err => {
             if(err.code === '23505') {
                 res.status(400).json({
-                    error: `Type "${type.name}" already exists`
+                    error: `Task "${task.name}" already exists`
                 });
             }
             res.status(500).json({
@@ -93,11 +93,11 @@ app.put('/api/types/:id', (req, res) => {
         }); 
 });
 
-app.delete('/api/types/:id', (req, res) => {
+app.delete('/api/tasks/:id', (req, res) => {
     const id = req.params.id;
 
     client.query(`
-        DELETE FROM types
+        DELETE FROM tasks
         WHERE  id = $1
         RETURNING *;
     `,
@@ -109,7 +109,7 @@ app.delete('/api/types/:id', (req, res) => {
         .catch(err => {
             if(err.code === '23503') {
                 res.status(400).json({
-                    error: `Could not remove, type is in use. Make inactive or delete all cats with that type first.`
+                    error: `Could not remove, task is already present. Make inactive or delete all tasks with that name first.`
                 });
             }
             res.status(500).json({
@@ -117,15 +117,6 @@ app.delete('/api/types/:id', (req, res) => {
             });
         }); 
 });
-
-
-
-
-
-
-
-
-
 
 // Start the server
 app.listen(PORT, () => {
