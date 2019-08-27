@@ -18,6 +18,105 @@ app.use(cors()); // enable CORS request
 app.use(express.static('public')); // enable serving files from public
 app.use(express.json()); // enable reading incoming json data
 
+app.get('/api/todos', (req, res) => {
+    const showAll = (req.query.show && req.query.show.toLowerCase() === 'all');
+    const where = showAll ? '' : 'WHERE inactive = FALSE';
+    
+    client.query(`
+        SELECT
+            id,
+            name,
+            inactive
+        FROM types
+        ${where}
+        ORDER BY name;
+    `)
+        .then(result => {
+            res.json(result.rows);
+        })
+        .catch(err => {
+            res.status(500).json({
+                error: err.message || err
+            });
+        });   
+});
+
+app.post('/api/types', (req, res) => {
+    const type = req.body;
+    client.query(`
+        INSERT INTO types (name)
+        VALUES ($1)
+        RETURNING *;
+    `,
+    [type.name]
+    )
+        .then(result => {
+            res.json(result.rows[0]);
+        })
+        .catch(err => {
+            if(err.code === '23505') {
+                res.status(400).json({
+                    error: `Type "${type.name}" already exists`
+                });
+            }
+            res.status(500).json({
+                error: err.message || err
+            });
+        }); 
+});
+
+app.put('/api/types/:id', (req, res) => {
+    const id = req.params.id;
+    const type = req.body;
+
+    client.query(`
+        UPDATE types
+        SET    name = $2,
+               inactive = $3
+        WHERE  id = $1
+        RETURNING *;
+    `,
+    [id, type.name, type.inactive]
+    )
+        .then(result => {
+            res.json(result.rows[0]);
+        })
+        .catch(err => {
+            if(err.code === '23505') {
+                res.status(400).json({
+                    error: `Type "${type.name}" already exists`
+                });
+            }
+            res.status(500).json({
+                error: err.message || err
+            });
+        }); 
+});
+
+app.delete('/api/types/:id', (req, res) => {
+    const id = req.params.id;
+
+    client.query(`
+        DELETE FROM types
+        WHERE  id = $1
+        RETURNING *;
+    `,
+    [id]
+    )
+        .then(result => {
+            res.json(result.rows[0]);
+        })
+        .catch(err => {
+            if(err.code === '23503') {
+                res.status(400).json({
+                    error: `Could not remove, type is in use. Make inactive or delete all cats with that type first.`
+                });
+            }
+            res.status(500).json({
+                error: err.message || err
+            });
+        }); 
+});
 
 
 
