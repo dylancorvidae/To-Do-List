@@ -20,13 +20,13 @@ app.use(express.json()); // enable reading incoming json data
 
 app.get('/api/todos', (req, res) => {
     const showAll = (req.query.show && req.query.show.toLowerCase() === 'all');
-    const where = showAll ? '' : 'WHERE inactive = FALSE';
+    const where = showAll ? '' : 'WHERE complete = FALSE';
     
     client.query(`
         SELECT
             id,
             name,
-            inactive
+            complete
         FROM tasks
         ${where}
         ORDER BY name;
@@ -72,11 +72,11 @@ app.put('/api/tasks/:id', (req, res) => {
     client.query(`
         UPDATE tasks
         SET    name = $2,
-               inactive = $3
+               complete = $3
         WHERE  id = $1
         RETURNING *;
     `,
-    [id, task.name, task.inactive]
+    [id, task.name, task.complete]
     )
         .then(result => {
             res.json(result.rows[0]);
@@ -109,7 +109,7 @@ app.delete('/api/tasks/:id', (req, res) => {
         .catch(err => {
             if(err.code === '23503') {
                 res.status(400).json({
-                    error: `Could not remove, task is already present. Make inactive or delete all tasks with that name first.`
+                    error: `Could not remove, task is already present. Make complete or delete all tasks with that name first.`
                 });
             }
             res.status(500).json({

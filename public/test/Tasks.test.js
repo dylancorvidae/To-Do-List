@@ -8,13 +8,13 @@ test('renders', assert => {
     const task = {
         id: 4,
         name: 'Practice code',
-        inactive: false
+        complete: false
     };
 
     const expected = /*html*/`
-        <li class="tasks"> <span class="${task.inactive ? 'inactive' : ''}">${task.name}</span>
+        <li class="tasks"> <span class="${task.complete ? 'complete' : ''}">${task.name}</span>
             <div>
-                <button class="inactive-button"> Make Inactive </button>
+                <button class="complete-button"> Make complete </button>
                 <button class="remove-button"> 🗑 </button>
             </div>
         </li>
@@ -33,13 +33,13 @@ test('renders', assert => {
     const task = {
         id: 14,
         name: 'Bad Task',
-        inactive: true
+        complete: true
     };
 
     const expected = /*html*/`
-        <li class="tasks"> <span class="${task.inactive ? 'inactive' : ''}">${task.name}</span>
+        <li class="tasks"> <span class="${task.complete ? 'complete' : ''}">${task.name}</span>
             <div>
-                <button class="inactive-button"> Make Active </button>
+                <button class="complete-button"> Make Incomplete </button>
                 <button class="remove-button"> 🗑 </button>
             </div>
         </li>

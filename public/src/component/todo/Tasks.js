@@ -7,9 +7,9 @@ class Tasks extends Component {
         const onUpdate = this.props.onUpdate;
         const onRemove = this.props.onRemove;
 
-        const inactiveButton = dom.querySelector('.inactive-button');
-        inactiveButton.addEventListener('click', () => {
-            task.inactive = !task.inactive;
+        const completeButton = dom.querySelector('.complete-button');
+        completeButton.addEventListener('click', () => {
+            task.complete = !task.complete;
             onUpdate(task);
         });
         
@@ -26,10 +26,10 @@ class Tasks extends Component {
 
         return /*html*/`
             <li class="tasks">
-                <span class="${task.inactive ? 'inactive' : ''}">${task.name}</span>
+                <span class="${task.complete ? 'complete' : ''}">${task.name}</span>
                 <div>
-                    <button class="inactive-button">
-                        Make ${task.inactive ? 'Active' : 'Inactive'}
+                    <button class="complete-button">
+                        Make ${task.complete ? 'incomplete' : 'complete'}
                     </button>
                     <button class="remove-button">
                         🗑
