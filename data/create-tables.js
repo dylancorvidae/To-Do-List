@@ -1,22 +1,12 @@
-const client = require('../../bc-summer-2019-demo/bootcamp-two/11-same-page-data/lib/client');
+const client = require('../public/lib/client.js');
 
 client.connect()
     .then(() => {
         return client.query(`
-            CREATE TABLE types (
+            CREATE TABLE tasks (
                 id SERIAL PRIMARY KEY NOT NULL,
                 name VARCHAR(256) NOT NULL UNIQUE,
                 complete BOOLEAN NOT NULL DEFAULT FALSE
-            );
-
-            CREATE TABLE cats (
-                id SERIAL PRIMARY KEY NOT NULL,
-                name VARCHAR(256) NOT NULL,
-                type_id INTEGER NOT NULL REFERENCES types(id),
-                url VARCHAR(256) NOT NULL,
-                year INTEGER NOT NULL,
-                lives INTEGER NOT NULL,
-                is_sidekick BOOLEAN NOT NULL
             );
     `);
     })

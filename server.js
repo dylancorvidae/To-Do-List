@@ -18,7 +18,7 @@ app.use(cors()); // enable CORS request
 app.use(express.static('public')); // enable serving files from public
 app.use(express.json()); // enable reading incoming json data
 
-app.get('/api/todos', (req, res) => {
+app.get('/api/tasks', (req, res) => {
     const showAll = (req.query.show && req.query.show.toLowerCase() === 'all');
     const where = showAll ? '' : 'WHERE complete = FALSE';
     

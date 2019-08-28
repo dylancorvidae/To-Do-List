@@ -1,10 +1,9 @@
-const client = require('../../bc-summer-2019-demo/bootcamp-two/11-same-page-data/lib/client');
+const client = require('../public/lib/client.js');
 
 client.connect()
     .then(() => {
         return client.query(`
-            DROP TABLE IF EXISTS cats;
-            DROP TABLE IF EXISTS types;
+            DROP TABLE IF EXISTS tasks;
     `);
     })
     .then(
