@@ -5,7 +5,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
-const client = require('./lib/client');
+const client = require('./public/lib/client');
 
 // Database Client
 client.connect();
@@ -20,13 +20,13 @@ app.use(express.json()); // enable reading incoming json data
 
 app.get('/api/tasks', (req, res) => {
     const showAll = (req.query.show && req.query.show.toLowerCase() === 'all');
-    const where = showAll ? '' : 'WHERE complete = FALSE';
+    const where = showAll ? '' : 'WHERE completed = FALSE';
     
     client.query(`
         SELECT
             id,
             name,
-            complete
+            completed
         FROM tasks
         ${where}
         ORDER BY name;
@@ -43,6 +43,7 @@ app.get('/api/tasks', (req, res) => {
 
 app.post('/api/tasks', (req, res) => {
     const task = req.body;
+    console.log('server', task);
     client.query(`
         INSERT INTO tasks (name)
         VALUES ($1)
@@ -51,6 +52,8 @@ app.post('/api/tasks', (req, res) => {
     [task.name]
     )
         .then(result => {
+            console.log(result);
+            
             res.json(result.rows[0]);
         })
         .catch(err => {
@@ -70,13 +73,13 @@ app.put('/api/tasks/:id', (req, res) => {
     const task = req.body;
 
     client.query(`
-        UPDATE tasks
-        SET    name = $2,
-               complete = $3
-        WHERE  id = $1
-        RETURNING *;
+        UPDATE      tasks
+        SET         name = $2,
+                    completed = $3
+        WHERE       id = $1
+        RETURNING   *;
     `,
-    [id, task.name, task.complete]
+    [id, task.name, task.completed]
     )
         .then(result => {
             res.json(result.rows[0]);

@@ -7,11 +7,11 @@ client.connect()
         return Promise.all(
             tasks.map(task => {
                 return client.query(`
-                    INSERT INTO tasks (name)
-                    VALUES ($1)
+                    INSERT INTO tasks (name, completed)
+                    VALUES ($1, $2)
                     RETURNING *;
                 `,
-                [task])
+                [task.name, task.completed])
                     .then(result => result.rows[0]);
             })
         );

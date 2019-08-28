@@ -6,7 +6,7 @@ client.connect()
             CREATE TABLE tasks (
                 id SERIAL PRIMARY KEY NOT NULL,
                 name VARCHAR(256) NOT NULL UNIQUE,
-                complete BOOLEAN NOT NULL DEFAULT FALSE
+                completed BOOLEAN NOT NULL DEFAULT FALSE
             );
     `);
     })

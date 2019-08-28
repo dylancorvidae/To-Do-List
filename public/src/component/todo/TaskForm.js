@@ -12,7 +12,8 @@ class TaskForm extends Component {
             event.preventDefault();
 
             const specificTask = {
-                name: input.value
+                name: input.value,
+                completed: false
             };
 
             error.textContent = '';
@@ -32,7 +33,7 @@ class TaskForm extends Component {
         return /*html*/`
         <section class="todo-form-section">
             <form class="todo-form">
-                <input name="todo" required>
+                <input name="task" required>
                 <button>Add</button>
             </form>
             <p class="error"></p>

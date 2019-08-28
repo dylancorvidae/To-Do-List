@@ -1,18 +1,16 @@
 import Component from '../Component.js';
-import Header from './Header.js';
+import TaskApp from './TaskApp.js';
 
 class App extends Component {
 
     onRender(dom) {
-        const header = new Header();
-        dom.prepend(header.renderDOM());
+        const taskApp = new TaskApp();
+        dom.prepend(taskApp.renderDOM());
     }
 
     renderHTML() {
         return /*html*/`
             <div>
-                <main>
-                </main>
             </div>
         `;
     }

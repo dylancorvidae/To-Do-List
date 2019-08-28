@@ -14,7 +14,7 @@ header {
     flex-wrap: wrap;
     justify-content: center;
     align-content: center;
-    height: 200px;
+    height: auto;
 }
 
 #logo {
@@ -33,11 +33,35 @@ h1 {
 main {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-content: center;
-    padding: 80px 0px 0px 0px;
+    padding: 10px 20px;
+    max-width: 700px;
+    width: 100%;
+    margin: auto;
+    margin-top: 40px;
+    border: 1px solid #aaa;
+
 }
 
-div{
+.loading-container {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 100px;
+    width: 100vw;
+    opacity: 0.7;
+}
+
+.loading-container img {
+    width: 200px;
+    border: 1px solid #aaa;
+    border-radius: 10px;
+    box-shadow: 1px 1px 3px black;
+}
+
+div {
     display: flex;
     flex-direction: column;
 }
@@ -51,24 +75,40 @@ h2 {
 
 
 .todo-form-section {
-    padding-bottom: 20px;
-    margin-bottom: 20px;
+    padding: 20px 10px 20px 10px;
+    margin-bottom: 0px 10px 20px 10px;
     border-bottom: 3px dashed  rgb(199, 199, 199);
+    font-family: 'Pangolin', cursive;
 }
 
 .todo-form {
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .todo-form input {
-    margin-left: 40px;
+    margin-left: 10%;
     font-size: 1.2em;
+    background-color: rgb(199, 199, 199);
 }
 
 button {
+    background-color: rgb(27, 27, 27);
     margin-left: 30px;
     font-size: 1.2em;
+    margin: 5px;
+    color:rgb(199, 199, 199);
+    font-family: 'Pangolin', cursive;
+}
+
+button:hover {
+    background-color: rgb(27, 27, 27);
+    margin-left: 30px;
+    font-size: 1.2em;
+    margin: 5px;
+    color:rgb(199, 199, 199);
+    box-shadow: 0px 0px 8px 2px rgb(199, 199, 199);
 }
 
 .error {
@@ -77,20 +117,36 @@ button {
     margin-top: 10px;
 }
 
-
 ul {
-    
+    margin: 10px;
+    padding: 0px 10px;
+    line-height: 1.7em;
 }
 
 li {
     display: flex;
-    justify-content: flex-start;
     align-content: center;
     font-size: 1.2em;
     list-style-type: none;
 }
 
-.checkbox {
-    width: 20px;
-    height: 20px;
+.tasks {
+    display: flex;
+    padding: 10px 0;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.completed {
+    text-decoration: line-through;
+}
+
+.task-buttons{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.remove-button {
+    width: 40px;
 }

@@ -9,7 +9,7 @@ class Tasks extends Component {
 
         const completeButton = dom.querySelector('.complete-button');
         completeButton.addEventListener('click', () => {
-            task.complete = !task.complete;
+            task.completed = !task.completed;
             onUpdate(task);
         });
         
@@ -26,10 +26,10 @@ class Tasks extends Component {
 
         return /*html*/`
             <li class="tasks">
-                <span class="${task.complete ? 'complete' : ''}">${task.name}</span>
-                <div>
+                <span class="${task.completed ? 'complete' : ''}">${task.name}</span>
+                <div class="task-buttons">
                     <button class="complete-button">
-                        Make ${task.complete ? 'incomplete' : 'complete'}
+                        ${task.completed ? 'Incomplete' : 'Completed'}
                     </button>
                     <button class="remove-button">
                         🗑
