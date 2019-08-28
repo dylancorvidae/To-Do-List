@@ -32,11 +32,12 @@ class TaskForm extends Component {
     renderHTML() {
         return /*html*/`
         <section class="todo-form-section">
-            <form class="todo-form">
-                <input name="task" required>
-                <button>Add</button>
-            </form>
-            <p class="error"></p>
+            <h2>Goals & Tasks</h2>
+                <form class="todo-form">
+                    <input name="task" required>
+                    <button>Add</button>
+                </form>
+                <p class="error"></p>
         </section>
         `;
     }

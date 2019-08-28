@@ -10,17 +10,19 @@ body {
 }
 
 header {
-    display:flex;
+    display:inline-flex;
     flex-wrap: wrap;
     justify-content: center;
     align-content: center;
     height: auto;
 }
 
-#logo {
-    width: 1em;
-    height: 1em;
-    margin: 10%;
+.logo {
+    width: 40%;
+    height: 40%;
+    margin: 10px;
+    max-width: 187px;
+    max-height: 188px;
 }
 
 h1 {
@@ -28,6 +30,7 @@ h1 {
     font-family: 'Quintessential', cursive;
     font-weight: bold;
     font-size: 4rem;
+    margin: 45px 20px;
 }
 
 main {
@@ -71,12 +74,16 @@ h2 {
     color: rgb(199, 199, 199);
     font-weight: bold;
     font-size: 2em;
-    margin-left: 2em;
+    font-family: 'Quintessential', cursive;
 }
 
 .todo-form-section {
-    padding: 20px 10px 20px 10px;
-    margin-bottom: 0px 10px 20px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 10px 10px 10px;
+    margin: 0px 10px 20px 10px;
     border-bottom: 3px dashed  rgb(199, 199, 199);
     font-family: 'Noto Serif', serif;
 }
