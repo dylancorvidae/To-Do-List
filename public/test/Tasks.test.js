@@ -3,7 +3,7 @@ const test = QUnit.test;
 
 QUnit.module('Tasks');
 
-test('renders', assert => {
+skip('renders', assert => {
     // arrange
     const task = {
         id: 4,
@@ -28,7 +28,7 @@ test('renders', assert => {
     assert.htmlEqual(html, expected);
 });
 
-test('renders', assert => {
+skip('renders', assert => {
     // arrange
     const task = {
         id: 14,
