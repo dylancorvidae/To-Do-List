@@ -28,8 +28,8 @@ class Tasks extends Component {
             <li class="tasks">
                 <span class="${task.completed ? 'complete' : ''}">${task.name}</span>
                 <div class="task-buttons">
-                    <button class="complete-button">
-                        ${task.completed ? 'Incomplete' : 'Completed'}
+                    <button class="complete-button">    
+                        ${task.completed ? ' Complete ' : ' Incomplete '}
                     </button>
                     <button class="remove-button">
                         🗑

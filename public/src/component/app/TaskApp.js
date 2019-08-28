@@ -13,7 +13,7 @@ class TaskApp extends Component {
         
         const main = dom.querySelector('main');
 
-        const loading = new Loading({ loading: true });
+        const loading = new Loading({ loading: false });
         main.appendChild(loading.renderDOM());
 
         const taskForm = new TaskForm({
@@ -52,7 +52,7 @@ class TaskApp extends Component {
                         taskList.update({ tasks });
                     })
                     .finally(() => {
-                        // loading.update({ loading: false });
+                        loading.update({ loading: false });
                     });
             },
             onRemove: task => {
