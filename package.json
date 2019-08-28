@@ -1,0 +1,42 @@
+{
+  "name": "y",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "cd public && npm i esm jsdom && npx qunit test/index.js",
+    "start": "node server.js",
+    "start:watch": "nodemon server.js --ignore public",
+    "create-tables": "node data/create-tables.js",
+    "drop-tables": "node data/drop-tables.js",
+    "load-seed-data": "node data/load-seed-data.js",
+    "recreate-tables": "npm run drop-tables && npm run create-tables",
+    "setup-db": "npm run recreate-tables && npm run load-seed-data"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dylancorvidae/To-Do-List.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dylancorvidae/To-Do-List/issues"
+  },
+  "homepage": "https://github.com/dylancorvidae/To-Do-List#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.1.0",
+    "esm": "^3.2.25",
+    "express": "^4.17.1",
+    "jsdom": "^15.1.1",
+    "morgan": "^1.9.1",
+    "pg": "^7.12.1",
+    "superagent": "^5.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.2.2",
+    "nodemon": "^1.19.1"
+  }
+}
