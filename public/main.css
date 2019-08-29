@@ -1,0 +1,156 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0px;
+    background-color: black;
+    color: rgb(199, 199, 199);
+    font-family: 'Noto Serif', serif;
+}
+
+header {
+    display:inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    height: auto;
+}
+
+.logo {
+    width: 40%;
+    height: 40%;
+    margin: 10px;
+    max-width: 187px;
+    max-height: 188px;
+}
+
+h1 {
+    color: white;
+    font-family: 'Quintessential', cursive;
+    font-weight: bold;
+    font-size: 4rem;
+    margin: 45px 20px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    padding: 10px 20px;
+    max-width: 700px;
+    width: 100%;
+    margin: auto;
+    margin-top: 40px;
+    border: 1px solid #aaa;
+
+}
+
+.loading-container {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 50%;
+    right: 27%;
+    width: 200px;
+    opacity: 0.7;
+}
+
+.loading-container img {
+    width: 200px;
+    border: 1px solid #aaa;
+    border-radius: 50%;
+    box-shadow: 1px 1px 3px black;
+}
+
+div {
+    display: flex;
+    flex-direction: column;
+}
+
+h2 {
+    color: rgb(199, 199, 199);
+    font-weight: bold;
+    font-size: 2em;
+    font-family: 'Quintessential', cursive;
+}
+
+.todo-form-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 10px 10px 10px;
+    margin: 0px 10px 20px 10px;
+    border-bottom: 3px dashed  rgb(199, 199, 199);
+    font-family: 'Noto Serif', serif;
+}
+
+.todo-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.todo-form input {
+    margin-left: 10%;
+    font-size: 1.2em;
+    background-color: rgb(199, 199, 199);
+}
+
+button {
+    background-color: rgb(27, 27, 27);
+    margin-left: 30px;
+    font-size: 1.1em;
+    margin: 5px;
+    color:rgb(199, 199, 199);
+    font-family: 'Noto Serif', serif;
+    border-radius: 50%;
+    padding: 7px;
+}
+
+button:hover {
+    box-shadow: 0px 0px 8px 2px rgb(199, 199, 199);
+}
+
+.error {
+    font-family: monospace;
+    color: red;
+    margin-top: 10px;
+}
+
+ul {
+    margin: 10px;
+    padding: 0px 10px;
+    line-height: 1.7em;
+}
+
+li {
+    display: flex;
+    align-content: center;
+    font-size: 1.2em;
+    list-style-type: none;
+}
+
+.tasks {
+    display: flex;
+    padding: 10px 0;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.completed {
+    text-decoration: line-through;
+}
+
+.task-buttons{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.remove-button {
+    width: 40px;
+}
