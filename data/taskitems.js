@@ -12,7 +12,7 @@ module.exports = [
         completed: false
     },
     {
-        name: 'Help some else', 
+        name: 'Help someone else', 
         completed: false
     },
     {
