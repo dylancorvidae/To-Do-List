@@ -6,7 +6,6 @@ class SignUp extends Component {
         const onSignUp = this.props.onSignUp;
 
         form.addEventListener('submit', event => {
-            console.log('hello');
             
             event.preventDefault();
 
