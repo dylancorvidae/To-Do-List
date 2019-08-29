@@ -1,0 +1,47 @@
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    max-width: 400px;
+}
+
+main p.switch, main p.errors {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.auth-form-standard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.auth-form-standard p {
+    display: flex;
+    justify-content: space-around;
+    
+}
+
+input {
+    margin-left: 10%;
+    font-size: 1.2em;
+    background-color: rgb(199, 199, 199);
+}
+
+.errors {
+    font-family: monospace;
+    color: red;
+}
+
+.no-display {
+    display: none;
+}
+
+#signup-button {
+    padding: 12px;
+}
+
+#signin-button {
+    padding: 12px;
+}
