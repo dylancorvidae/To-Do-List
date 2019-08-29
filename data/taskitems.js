@@ -1,22 +1,22 @@
 module.exports = [
     {
-        name: 'Be an inspirational and present parent', 
+        name: 'Be an inspirational and present person', 
         completed: false
     },
     {
-        name: 'Practice Code', 
+        name: 'Improve myself in some way', 
         completed: false
     },
     {
-        name: 'Practice Trapeze', 
+        name: 'Take a break to breath', 
         completed: false
     },
     {
-        name: 'Practice guitar', 
+        name: 'Help some else', 
         completed: false
     },
     {
-        name: 'Practice piano', 
+        name: 'Exercise', 
         completed: false
     }
 ];
