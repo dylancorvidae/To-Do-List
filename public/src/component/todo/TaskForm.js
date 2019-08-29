@@ -1,4 +1,5 @@
 import Component from '../Component.js';
+import store from '../../services/store.js';
 
 class TaskForm extends Component {
 
@@ -7,7 +8,19 @@ class TaskForm extends Component {
         const form = dom.querySelector('form');
         const input = dom.querySelector('input[name=task]');
         const error = dom.querySelector('p.error');
+        const signOutButton = dom.querySelector('button.signout-button');
+        
+        //creating sign out ability
+        signOutButton.addEventListener('click', () => {
+            function signOut() {
+                store.removeToken();
+                const searchParams = new URLSearchParams(location.search);
+                location = searchParams.get('redirect') || './auth.html';
+            }
+            signOut();
+        });
 
+        //add new task
         form.addEventListener('submit', event => {
             event.preventDefault();
 
@@ -33,6 +46,7 @@ class TaskForm extends Component {
         return /*html*/`
         <section class="todo-form-section">
             <h2>Goals & Tasks</h2>
+                <button class="signout-button">Sign Out</button>
                 <form class="todo-form">
                     <input name="task" required>
                     <button>Add</button>

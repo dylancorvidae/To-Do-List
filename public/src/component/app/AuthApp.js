@@ -7,7 +7,6 @@ import store from '../../services/store.js';
 
 function success(user) {
     store.setToken(user.token);
-    console.log('success');
     
     const searchParams = new URLSearchParams(location.search);
     location = searchParams.get('redirect') || './index.html';
