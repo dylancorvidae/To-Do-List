@@ -95,7 +95,6 @@ class TaskApp extends Component {
         return /*html*/`
             <div>
                 <main>
-                
                 </main>
             </div>
         `;

@@ -1,4 +1,4 @@
-const client = require('../public/lib/client.js');
+const client = require('../lib/client.js');
 const tasks = require('./taskitems.js');
 
 client.connect()

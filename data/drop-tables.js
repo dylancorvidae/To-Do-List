@@ -1,9 +1,10 @@
-const client = require('../public/lib/client.js');
+const client = require('../lib/client.js');
 
 client.connect()
     .then(() => {
         return client.query(`
             DROP TABLE IF EXISTS tasks;
+            DROP TABLE IF EXISTS users;
     `);
     })
     .then(
